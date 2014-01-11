@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<!--
+	<title>Home</title>
+	-->
+	<title>首页</title>
+	<!--
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	-->
+	<meta charset="utf-8">
+	
+	<meta http-equiv="CACHE-CONTROL" content="NO-CACHE">
+	<meta http-equiv="EXPIRES" content="Sat, 22 Jun 2013 11:12:01 GMT">
+	
+	<link rel="stylesheet" href="content/style.css">
+	<link rel="stylesheet" href="content/nivo-slider/themes/default/default.css">
+	<link rel="stylesheet" href="content/nivo-slider/themes/light/light.css">
+	<link rel="stylesheet" href="content/nivo-slider/themes/dark/dark.css">
+	<link rel="stylesheet" href="content/nivo-slider/themes/bar/bar.css">
+	<link rel="stylesheet" href="content/nivo-slider/nivo-slider.css">
+	<style>
+		body {
+			margin: 0;
+			padding: 0;
+			font-family: sans-serif;
+			position: relative;
+			min-width: 1050px;
+		}
+		
+		p {
+			text-indent: 2em;
+			line-height: 1.5em;
+		}
+			
+			.clear {
+				clear: both;
+			}
+			
+			.hide {
+				display: none;
+			}
+			
+			.left {
+				float: left;
+			}
+			
+			.right {
+				float: right;
+			}
+			
+		.container {
+			margin: 0 auto;
+			width: 1000px;
+		}
+		
+		.textile {
+			background: url('content/images/textile_1.jpg');
+			width: 100%;
+			height: 200px;
+			position: absolute;
+		}
+		
+		.header {
+			position: relative;
+		}
+			
+			.logo {
+				text-align: center;
+				background: #73952d;
+				background: url('content/images/header_1.jpg') repeat center center scroll;
+				box-shadow: 0 1px 20px #222, 0px 1px 5px #666 inset;
+			}
+				
+				.logo-container {
+					*display: inline;
+					zoom: 1;
+					display: inline-block;
+					padding: 20px 100px;
+					position: relative;
+				}
+					
+					.logo-text {
+						color: #fff;
+						font-weight: bold;
+						font-size: 30px;
+						vertical-align: middle;
+						font-family: Century, sans-serif;
+					}
+					
+					.logo img {
+						vertical-align: middle;
+					}
+					
+					.logo-glow {
+						position: absolute;
+						bottom: 0;
+						width: 100%;
+						height: 40%;
+						left: 0;
+					}
+					
+			.nav {
+				list-style: none;
+				margin: 0 auto;
+				padding: 0;
+			}
+				
+				.nav li {
+					position: relative;
+					width: 20%;
+					float: left;
+					text-align: center;
+				}
+					
+					.nav li a, .nav li a:visited {
+						text-decoration: none;
+						color: #fff;
+						display: block;
+						padding: 20px 0;
+						font-weight: bold;
+						font-family: Century, sans-serif;
+						transition: color .25s;
+					}
+					
+					.nav li a:hover, .nav li a.current {
+						color: #bfc696;
+					}
+						
+						.nav li a img {
+							vertical-align: middle;
+							width: 25px;
+						}
+		
+		.content {
+			position: relative;
+			min-height: 500px;
+		}
+			
+			.nivo-container {
+				margin: 0 auto;
+				width: 900px;
+			}
+				
+				.slider-wrapper {
+					width: 100%;
+					margin: 0 auto;
+					border: 1px #ccc solid;
+					box-shadow: 0 0 5px rgba(0,0,0,.25);
+				}
+					
+					.slider-shadow-left {
+						background: url('content/images/shadow.png') no-repeat top left;
+						width: 165px;
+						height: 26px;
+						float: left;
+					}
+					
+					.slider-shadow-right {
+						background: url('content/images/shadow.png') no-repeat top right;
+						width: 165px;
+						height: 26px;
+						float: right;
+					}
+					
+		.footer {
+			background: #73952d;
+			position: relative;
+			width: 100%;
+			color: #fff;
+			padding: 20px 0;
+			font-size: 12px;
+			margin: 20px 0 0 0;
+		}
+		
+		#splash-screen {
+			position: fixed;
+			background: #fff url('content/images/splash-bg.jpg') no-repeat center center;
+			top: 0;
+			right: 0;
+			bottom: 0;
+			left: 0;
+			z-index: 99;
+		}
+			
+			.splash-screen-img {
+				position: relative;
+				margin: 50px auto;
+				display: block;
+			}
+		
+		.bordered-image {
+			border: 1px solid #ddd;
+			padding: 5px;
+			margin: 5px;
+		}
+	</style>
+	
+	<script src="scripts/jquery-1.9.1.min.js" type="text/javascript"></script>
+	<script src="scripts/jquery.nivo.slider.pack.js" type="text/javascript"></script>
+	<script>
+		var app = {
+			init: function () {
+				!window.console && (window.console = { log: function () {} });
+				
+				app.nivoSlider();
+				app.splashScreen();
+			},
+			data: function () {
+			},
+			nivoSlider: function (id, opt) {
+				$((id == null) ? "#slider" : id).nivoSlider((opt == null) ? { effect: 'random' } : opt);
+			},
+			splashScreen: function () {
+				$("#splash-screen").click(function () { 
+					$(this).fadeOut(250);
+				});
+				$(window).load(function(){
+					setTimeout(function() {
+						$('#splash-screen').fadeOut(1000);
+					}, 2000)
+				});
+			}
+		};
+		$(function () {
+			app.init();
+		});
+	</script>
+	
+</head>
+<body>
+	
+	<div id="splash-screen">
+		
+		<img src="content/images/splash-screen.png" alt="" class="splash-screen-img" />
+		
+	</div>
+	
+	<div class="textile"></div>
+	
+	<div class="header">
+	
+		<div class="logo">
+			<div class="logo-container">
+				<img src="content/images/curl_left.png" alt="" />
+				<span class="logo-text">Malaysia Taoism Association</span>
+				<img src="content/images/curl_right.png" alt="" />
+				<img src="content/images/logo_glow.png" class="logo-glow" alt="" />
+			</div>
+		</div>
+		
+		<div class="container">
+			
+			<ul class="nav">
+				
+				<li>
+					<a href="default.html" class="current">
+						<img src="content/images/yy.png" alt="" />
+						首页
+					</a>
+				</li>
+				
+				<li>
+					<a href="gallery.html">相簿</a>
+				</li>
+				
+				<li>
+					<a href="activity.html?id=458982277519530&name=%E6%B4%BB%E5%8A%A8">活动</a>
+				</li>
+				
+				<li>
+					<a href="about.html">关于我们</a>
+				</li>
+				
+				<li>
+					<a href="contact.html">联络我们</a>
+				</li>
+				
+			</ul>
+			
+			<div class="clear"></div>
+			
+		</div>
+		
+	</div>
+	
+	<div class="content">
+		
+		<div class="nivo-container">
+			
+			<!-- Nivo Slider 
+			
+			Effect List:
+			
+			sliceDown
+			sliceDownLeft
+			sliceUp
+			sliceUpLeft
+			sliceUpDown
+			sliceUpDownLeft
+			fold
+			fade
+			random
+			slideInRight
+			slideInLeft
+			boxRandom
+			boxRain
+			boxRainReverse
+			boxRainGrow
+			boxRainGrowReverse
+			
+			-->
+			<div class="slider-wrapper theme-light">
+				<div id="slider" class="nivoSlider">
+					<img src="content/nivo-slider/images/sn1.jpg" data-thumb="content/nivo-slider/images/sn1.jpg" alt="" title="" />
+					<img src="content/nivo-slider/images/sn2.jpg" data-thumb="content/nivo-slider/images/sn2.jpg" alt="" title="" />
+					<img src="content/nivo-slider/images/sn3.jpg" data-thumb="content/nivo-slider/images/sn3.jpg" alt="" title="" />
+					<img src="content/nivo-slider/images/sn4.jpg" data-thumb="content/nivo-slider/images/sn4.jpg" alt="" title="" />
+					<!--
+					<img src="content/nivo-slider/images/sn5.jpg" data-thumb="content/nivo-slider/images/sn5.jpg" alt="" title="" />
+					-->
+				</div>
+			</div>
+			<div class="slider-shadow-left"></div>
+			<div class="slider-shadow-right"></div>
+			<div class="clear"></div>
+			<!-- Nivo Slider End -->
+			
+		</div>
+		
+		<div class="container">
+			
+			<ul><li><b>道教历史</b></li></ul>
+			
+			<hr/>
+			
+			<img src="content/images/Picture1.jpg" alt="" style="height: 200px;margin-bottom: -13px;" />
+			
+			<p style="text-indent: 0;*display:inline;zoom:1;display:inline-block;width: 750px;">
+				道教是中国的传统宗教，它的历史远可以追溯到先秦时期，而正式形成于东汉的中后期。与世界其它大型宗教不同，道教并非是一人一时一地所创所生，乃中国历代各地不同的文化、思想相结合而成之宗教。
+			</p>
+			<div class="clear"></div>
+			
+			<br/>
+			
+			<ul><li><b>道教渊源</b></li></ul>
+			
+			<hr/>
+			
+			<p>
+				道教思想渊源杂而多端，与中国传统文化的诸多领域都有血肉相连的密切关系。道教有三大基本源头：鬼神崇拜、方仙信仰和黄老道家。
+			</p>
+			
+			<br/>
+			
+			<ul><li><b>三大基本源头</b></li></ul>
+			
+			<hr/>
+			
+			<p>
+				<b>鬼神巫术崇拜。</b>上古时代，人们将日月星辰、河海山岳和祖宗先贤视为神灵而加以祭祀，祈祷膜拜。黄帝时期有了对于天帝的祭祀，其内容有“封禅告天”、“郊祀上帝”、“接万灵于明廷”等。这种由来已久的鬼神崇拜，到周朝时形成了一个天神、地祗和人鬼的神灵系统和敬天法祖的信仰传统。道教不仅承袭了这种鬼神崇拜思想，而且将这个神灵系统纳入神仙体系。与鬼神崇拜密切联系的巫术信仰也由来已久，古人认为，卜筮可以决疑惑、断吉凶；巫觋能够沟通鬼神，转告神旨；巫术可以为人们祈福镶灾、医治疾病。上古巫术直接被战国神仙方士承袭。
+			</p>
+			
+			<p>
+				<b>神仙方术信仰。</b>战国时期，北方燕齐和南方荆楚等地出现了宣传长生成仙的神仙方士，形成了诸子百家中的神仙家（亦称方仙道）。方仙道宣扬长生成仙信仰，把黄帝和老子作为得道成仙的楷模而奉之为神仙祖师；提出了寻求仙境仙人和不死仙药的主张，并实践祠灶祭神、行气辟谷、导引吐纳等修炼方术；尤其是倡导炼丹术，把服食丹药作为成仙途径。荆楚地区的《庄子》和《楚辞》等对神灵仙境的屡见不鲜的描述，给神仙方士很大的启迪和思考；燕齐地区流传着海上蓬莱、瀛洲、方丈三神山的传说，驱动着帝王和方士前往寻访。方仙信仰和方技术数被道教继承，方士逐渐演化为道士。
+			</p>
+			
+			<p>
+				<b>道家黄老学说。</b>道家哲学是道教最重要的思想源泉，老子把“道”作为宇宙的本体，万物的规律，是超越时空的神秘“存在”，与宗教思想十分接近。道教便把“道”视为天地宇宙、阴阳五行、万物生灵的本源，以此为基点建立道教神学理论体系；并且从宗教神秘主义的角度把“道”人格化，将老子看作“道”的化身。道家注重修真养生，追求长生久视，老子、庄子提出清静无为、见素抱朴、专气致柔、心斋坐忘、导引守一等修道养生方法。道家的养生思想和神秘主义所形成的修道成仙思想成了道教的核心，教理教义和修炼方术都围绕着这个核心展开。
+			</p>
+			
+			<br/><br/>
+			
+			<ul><li><b>太極圖</b></li></ul>
+			
+			<hr/>
+			
+			<img src="content/images/home/1.jpg" alt="" style="width: 100px;float:right;" class="bordered-image" />
+			
+			<p>
+				<b>太极图</b>是指代表阴阳（太极）思想的中国符号，有时也泛指历史上其他文化中所使用的与中国太极图相似的几何图案。这类符号标志大部分是由两个不同颜色的半圆形泪珠状曲线组成，稱為黑白陰陽双魚。以太極圓直徑的一半作兩個圓，太極圓被分成四部分，每兩部分組合起來，便成為一對陰陽双魚。或者是由一个反S型曲线将一个圆分成两部分，每一部分都标记有一个不同颜色的圆点。太极图一般由黑和白两种颜色组成。在西元前五世紀凯尔特艺术和古典时代晚期西罗马帝国军服的纹章中都有这种类型的符号。
+			</p>
+			
+			<div class="clear"></div>
+			
+			<br/><br/>
+			
+			<ul><li><b>道教的太极图</b></li></ul>
+			
+			<hr/>
+			
+			<img src="content/images/home/2.jpg" alt="" style="width: 200px;float:right;" class="bordered-image" />
+			
+			<p>
+				<b>道教的太极图</b>据传是宋朝的陈抟所创。原叫“无极图”。据史书记载，陈抟曾将“太极图”传给其学生种放，种放以之分别传穆修、李溉等人，后来穆修将“太极图”传给周敦颐。周敦颐写了《太极图说》加以解释。现在我们看到的太极图，就是周敦颐所传的。
+			</p>
+			
+			<p>
+				如今的太极图还是一些武术，特别是太极拳的标志之一。韩国国旗的图案也是源自太极图。
+			</p>
+			
+			<div class="clear"></div>
+			
+			<br/><br/>
+			
+			<ul><li><b>八卦图</b></li></ul>
+			
+			<hr/>
+			
+			<p>
+				八卦记忆口诀：
+			</p>
+			
+			<p>
+				<span style="COLOR: red">乾</span></strong>三连、<strong style="COLOR: red">坤</strong>六断；<strong style="COLOR: red">离</strong>中虚、<strong style="COLOR: red">坎</strong>中满；<strong style="COLOR: red">震</strong>仰盂、<strong style="COLOR: red">艮</strong>覆碗；<strong style="COLOR: red">兑</strong>上缺，<strong style="COLOR: red">巽</strong>下断。</span>
+			</p>
+			
+			<img src="content/images/home/3.jpg" alt="" style="width: 400px;display:block;margin: 5px auto;" class="bordered-image" />
+			
+			<p>
+				——这是先天八卦图，与下面二个后天八卦图.在方位上有区别。我们现在一般是用后天八卦，有时候也看情况可以二者互用。
+			</p>
+			
+			<img src="content/images/home/4.jpg" alt="" style="width: 300px;float: left;margin-left: 180px;" class="bordered-image" />
+			
+			<img src="content/images/home/5.jpg" alt="" style="width: 300px;float: left;margin-left: 10px;" class="bordered-image" />
+			
+			<div class="clear"></div>
+			
+			<br/><br/>
+			
+			<!--
+			<ul><li><b>澳門</b></li></ul>
+			-->
+			<ul><li><b>澳门正壬法壇</b></li></ul>
+			
+			<hr/>
+			
+			<iframe width="300" height="200" src="http://www.youtube.com/embed/XadwmTk6i8Y?v=1" frameborder="0" style="margin: 7px;" allowfullscreen></iframe>
+			<iframe width="300" height="200" src="http://www.youtube.com/embed/dB8Fhmosb8c?v=1" frameborder="0" style="margin: 7px;" allowfullscreen></iframe>
+			<iframe width="300" height="200" src="http://www.youtube.com/embed/efRjULhwD78?v=1" frameborder="0" style="margin: 7px;" allowfullscreen></iframe>
+			<!--
+			<div style="width: 300px;height: 180px;margin: 7px;display:inline-block;*display:inline;zoom:1;background:#ddd;"></div>
+			<div style="width: 300px;height: 180px;margin: 7px;display:inline-block;*display:inline;zoom:1;background:#ddd;"></div>
+			<div style="width: 300px;height: 180px;margin: 7px;display:inline-block;*display:inline;zoom:1;background:#ddd;"></div>
+			-->
+			<br/><br/>
+			
+			<ul><li><b>马来西亚道教联合总会</b></li></ul>
+			
+			<hr/>
+			<!--
+			<iframe width="300" height="200" src="http://www.youtube.com/embed/xIjfnd90oAQ" frameborder="0" style="margin: 7px 0 7px 314px;" allowfullscreen></iframe>
+			-->
+			<iframe width="300" height="200" src="http://www.youtube.com/embed/M0eWgnKe8mM" frameborder="0" style="margin: 7px;" allowfullscreen></iframe>
+			
+		</div>
+		
+	</div>
+	
+	<div class="footer">
+		
+		<div class="container">
+			
+			<div class="left hide">
+				&copy; 2013 by Malaysia Taoism Association
+			</div>
+			
+			<div class="right">
+				&copy; 2013 by Malaysia Taoism Association
+			</div>
+			
+			<div class="clear"></div>
+			
+		</div>
+		
+	</div>
+	
+</body>
+</html>

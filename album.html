@@ -1,0 +1,527 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<title>相簿</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta charset="utf-8">
+	
+	<link rel="stylesheet" href="content/style.css">
+	<link rel="stylesheet" href="content/nivo-slider/themes/default/default.css">
+	<link rel="stylesheet" href="content/nivo-slider/themes/light/light.css">
+	<link rel="stylesheet" href="content/nivo-slider/themes/dark/dark.css">
+	<link rel="stylesheet" href="content/nivo-slider/themes/bar/bar.css">
+	<link rel="stylesheet" href="content/nivo-slider/nivo-slider.css">
+	<style>
+		body {
+			margin: 0;
+			padding: 0;
+			font-family: sans-serif;
+			position: relative;
+			min-width: 1050px;
+		}
+		
+		p {
+			text-indent: 2em;
+			line-height: 1.5em;
+		}
+			
+			.clear {
+				clear: both;
+			}
+			
+			.hide {
+				display: none;
+			}
+			
+			.left {
+				float: left;
+			}
+			
+			.right {
+				float: right;
+			}
+			
+		.container {
+			margin: 0 auto;
+			width: 1000px;
+		}
+		
+		.textile {
+			background: url('content/images/textile_1.jpg');
+			width: 100%;
+			height: 200px;
+			position: absolute;
+		}
+		
+		.header {
+			position: relative;
+		}
+			
+			.logo {
+				text-align: center;
+				background: #73952d;
+				background: url('content/images/header_1.jpg') repeat center center scroll;
+				box-shadow: 0 1px 20px #222, 0px 1px 5px #666 inset;
+			}
+				
+				.logo-container {
+					*display: inline;
+					zoom: 1;
+					display: inline-block;
+					padding: 20px 100px;
+					position: relative;
+				}
+					
+					.logo-text {
+						color: #fff;
+						font-weight: bold;
+						font-size: 30px;
+						vertical-align: middle;
+						font-family: Century, sans-serif;
+					}
+					
+					.logo img {
+						vertical-align: middle;
+					}
+					
+					.logo-glow {
+						position: absolute;
+						bottom: 0;
+						width: 100%;
+						height: 40%;
+						left: 0;
+					}
+					
+			.nav {
+				list-style: none;
+				margin: 0 auto;
+				padding: 0;
+			}
+				
+				.nav li {
+					position: relative;
+					width: 20%;
+					float: left;
+					text-align: center;
+				}
+					
+					.nav li a, .nav li a:visited {
+						text-decoration: none;
+						color: #fff;
+						display: block;
+						padding: 20px 0;
+						font-weight: bold;
+						font-family: Century, sans-serif;
+						transition: color .25s;
+					}
+					
+					.nav li a:hover, .nav li a.current {
+						color: #bfc696;
+					}
+						
+						.nav li a img {
+							vertical-align: middle;
+							width: 25px;
+						}
+		
+		.content {
+			position: relative;
+			min-height: 500px;
+		}
+			
+			.nivo-container {
+				margin: 0 auto;
+				width: 700px;
+			}
+				
+				.slider-wrapper {
+					width: 100%;
+					margin: 0 auto;
+					border: 1px #ccc solid;
+					box-shadow: 0 0 5px rgba(0,0,0,.25);
+				}
+					
+					.slider-shadow-left {
+						background: url('content/images/shadow.png') no-repeat top left;
+						width: 165px;
+						height: 26px;
+						float: left;
+					}
+					
+					.slider-shadow-right {
+						background: url('content/images/shadow.png') no-repeat top right;
+						width: 165px;
+						height: 26px;
+						float: right;
+					}
+					
+		.footer {
+			background: #73952d;
+			position: relative;
+			width: 100%;
+			color: #fff;
+			padding: 20px 0;
+			font-size: 12px;
+			margin: 20px 0 0 0;
+		}
+		
+		/*
+			
+			Custom
+			
+		*/
+		
+		.profile {
+			*display: inline;
+			display: inline-block;
+			zoom: 1;
+			border: 1px solid #ccc;
+			box-shadow: 0 0 5px rgba(0,0,0,.25);
+			padding: 5px;
+			text-align: center;
+			margin: 20px;
+		}
+			
+			.profile-picture {
+				padding: 5px;
+				width: 100px;
+				height: 125px;
+				float: left;
+			}
+			
+			.profile-name {
+				padding: 5px;
+				line-height: 1.5em;
+				font-weight: bold;
+			}
+		/*
+			
+			Custom
+			
+		*/
+		.content .container {
+			background: #fff;
+			border: 1px solid #ccc;
+			box-shadow: 0 0 5px rgba(0,0,0,.25);
+			padding: 20px;
+		}
+		
+		#box-container {
+			position: relative;
+		}
+			
+			.photo {
+				position: relative;
+				display: inline-block;
+				*display: inline;
+				zoom: 1;
+				padding: 5px;
+				margin: 10px 20px;
+				width: 280px;
+				color: #000;
+				text-decoration: none;
+			}
+				
+				.photo:hover {
+					color: #bfc696;
+				}
+				
+				.photo .title {
+					font-weight: bold;
+					font-size: 14px;
+					white-space: nowrap;
+					overflow: hidden;
+					text-overflow: ellipsis;
+				}
+				
+				.photo .cover {
+					height: 212px;
+					width: 281px;
+					overflow: hidden;
+					text-align: center;
+					margin: 5px 0;
+					border: 1px solid #ccc;
+					box-shadow: 0 0 5px rgba(0,0,0,.25);
+				}
+					
+					.photo .cover .image {
+						height: 200px;
+						padding: 5px;
+					}
+		
+	</style>
+	
+	<script src="//connect.facebook.net/en_US/all.js"></script>
+	<script src="scripts/jquery-1.9.1.min.js" type="text/javascript"></script>
+	<script src="scripts/jquery.nivo.slider.pack.js" type="text/javascript"></script>
+	<script>
+		var app = {
+			init: function () {
+				!window.console && (window.console = { log: function () {} });
+				
+				//app.nivoSlider();
+				app.data.request = app.request.get();
+				//app.photos.get();
+				$.post("http://jcaspian.tk/facebook/access_token.php", function (resp) {
+					app.data.access_token = resp;
+					app.photos.get();
+				});
+			},
+			data: function () {
+			},
+			nivoSlider: function (id, opt) {
+				$((id == null) ? "#slider" : id).nivoSlider((opt == null) ? { effect: 'boxRandom' } : opt);
+			},
+			request: {
+				get: function () {
+					var param = (location.href).split('/');
+					
+					try {
+						console.log(param);
+						param = (param[param.length - 1]);
+						param = param.substring(param.indexOf('?'), param.length).replace('?', '');
+						console.log(param);
+						param = $.parseJSON('{"' + decodeURI(param.toString().replace(/&/g, "\",\"").replace(/=/g,"\":\"")) + '"}');
+						
+						console.log("Got Param.");
+						console.log(param);
+						return param;
+					} catch (ex) {
+						console.log("No parameter.");
+						return null;
+					}
+				}
+			},
+			photos: {
+				get: function () {
+					try {
+						var param = {
+							fields: "photos",
+							access_token: app.data.access_token
+						};
+						//FB.api('/mtaoisma/albums?fields=id,link,name,photos.limit(1)', app.albums.onGet);
+						FB.api(["/", app.data.request.id].join(""), param, app.photos.onGet);
+					} catch (ex) {
+						console.log(ex);
+					}
+				},
+				onGet: function (resp) {
+					console.log("app.albums.onGet", resp);
+					
+					//try {
+						//if (resp.data != null && extract != null && extract != "") {
+						if (resp.photos != null) {
+							var parent = $("#box-container").parent();
+							var container = $("#box-container").detach();
+							
+							app.data.photosResp = resp;
+							
+							//for (var i = 0, ilen = resp.photos.data.length; i < ilen; i++) {
+							for (var i = resp.photos.data.length - 1; i >= 0; i--) {
+								var photoObj = resp.photos.data[i];
+								
+								var link = photoObj.link;
+								
+								/*
+								var photo = $("<a>").addClass("photo")
+													.attr("href", link)
+													.attr("target", "_blank");
+								*/
+								var photo = $("<a>").addClass("photo").data("index", i).addClass("photo-viewer-trigger");
+								var title = $("<div>").addClass("title")
+														.append(photoObj.name);
+								var cover = $("<div>").addClass("cover");
+								var image = $("<img>").addClass("image")
+														.attr("src", photoObj.images[5].source);
+								
+								var like = $('<iframe>').attr('src', '//www.facebook.com/plugins/like.php?href=' + photoObj.source + '&amp;send=false&amp;layout=standard&amp;width=260&amp;show_faces=false&amp;action=like&amp;colorscheme=light&amp;font&amp;height=25&amp;appId=169709503073848').attr('scrolling', 'no').attr('frameborder', '0').attr('style', 'border:none; overflow:hidden; width:260px; height:25px;').attr('allowTransparency', 'true');
+								
+								cover.append(image);
+								
+								photo.append(title).append(cover).append(like);
+								
+								container.append(photo);
+								
+								(app.data.photoViewerIndex == undefined) ? app.data.photoViewerIndex = [i] : (app.data.photoViewerIndex).push(i);
+							}
+							parent.append(container);
+							$(".album-title").append(app.data.request.name);
+							app.photos.bindPhotoViewer();
+						} else {
+							console.log("No photo found.");
+						}
+					//} catch (ex) {
+					//	console.log("error", ex);
+					//}
+				},
+				bindPhotoViewer: function () {
+					$(".photo-viewer-trigger").click(function () {
+						console.log("index", $(this).data("index"));
+						console.log("app.data.photoViewerIndex", app.data.photoViewerIndex);
+						app.photos.viewPhoto($(this).data("index"));
+					});
+					$(".photo-viewer-container").find(".arrow").click(function () {
+						app.photos.viewPhoto($(this).data("index"));
+					});
+					$(".button-close").click(function () {
+						$(".photo-viewer").addClass("hide");
+					});
+				},
+				viewPhoto: function (index) {
+					if (index != null && app.data.photoViewerIndex != undefined) {
+						/*
+						for (var i = 0, ilen = app.data.photoViewerIndex.length; i < ilen; i++) {
+							console.log(i + ": " + app.data.photoViewerIndex[i]);
+						}
+						*/
+						if (index > 0) {
+							$(".photo-viewer-container")
+								//.find(".arrow-left")
+								.find(".arrow-right")
+								.removeClass("hide")
+								.data("index", (index - 1));
+						} else {
+							$(".photo-viewer-container")
+								//.find(".arrow-left").addClass("hide").removeData("index");
+								.find(".arrow-right").addClass("hide").removeData("index");
+						}
+						if (index + 1 < app.data.photoViewerIndex.length) {
+							$(".photo-viewer-container")
+								//.find(".arrow-right")
+								.find(".arrow-left")
+								.removeClass("hide")
+								.data("index", (index + 1));
+						} else {
+							$(".photo-viewer-container")
+								//.find(".arrow-right").addClass("hide").removeData("index");
+								.find(".arrow-left").addClass("hide").removeData("index");
+						}
+						$(".photo-viewer-container").find(".photo-title").empty().append(app.data.photosResp.photos.data[index].name);
+						$(".photo-viewer-container").find(".photo-preview").attr("src", app.data.photosResp.photos.data[index].images[0].source);
+						$(".photo-viewer").removeClass("hide");
+						//console.log("index: " + app.data.photoViewerIndex[i]);
+						window.scrollTo(0, 0);
+					}
+				}
+			}
+		};
+		$(function () {
+			app.init();
+		});
+	</script>
+	
+</head>
+<body>
+	
+	<div class="textile"></div>
+	
+	<div class="header">
+	
+		<div class="logo">
+			<div class="logo-container">
+				<img src="content/images/curl_left.png" alt="" />
+				<span class="logo-text">Malaysia Taoism Association</span>
+				<img src="content/images/curl_right.png" alt="" />
+				<img src="content/images/logo_glow.png" class="logo-glow" alt="" />
+			</div>
+		</div>
+		
+		<div class="container">
+			
+			<ul class="nav">
+				
+				<li>
+					<a href="default.html">首页</a>
+				</li>
+				
+				<li>
+					<a href="gallery.html" class="current">
+						<img src="content/images/yy.png" alt="" />
+						相簿
+					</a>
+				</li>
+				
+				<li>
+					<a href="activity.html?id=458982277519530&name=%E6%B4%BB%E5%8A%A8">活动</a>
+				</li>
+				
+				<li>
+					<a href="about.html">关于我们</a>
+				</li>
+				
+				<li>
+					<a href="contact.html">联络我们</a>
+				</li>
+				
+			</ul>
+			
+			<div class="clear"></div>
+			
+		</div>
+		
+	</div>
+	
+	<div class="content">
+		
+		<div class="container">
+			
+			<span style="font-weight: bold;font-size: 20px;" class="album-title"></span>
+			
+			<br/><br/>
+			
+			<div class="clear"></div>
+			
+			<div id="box-container">
+				
+			</div>
+			
+			<div class="clear"></div>
+			
+		</div>
+		
+	</div>
+	
+	<div class="footer">
+		
+		<div class="container">
+			
+			<div class="left hide">
+				&copy; 2013 by Malaysia Taoism Association
+			</div>
+			
+			<div class="right">
+				&copy; 2013 by Malaysia Taoism Association
+			</div>
+			
+			<div class="clear"></div>
+			
+		</div>
+		
+	</div>
+	
+	<div class="photo-viewer hide">
+		
+		<div class="photo-viewer-container">
+			
+			<span class="button-close">&#10006;</span>
+			
+			<div class="photo-title">asd</div>
+			
+			<div class="arrow arrow-left">
+				<!--	previous	-->
+			</div>
+			
+			<div class="arrow arrow-right">
+				<!--	next	-->
+			</div>
+			
+			<img src="" alt="" class="photo-preview" />
+			
+			<div class="clear"></div>
+			
+		</div>
+		
+	</div>
+	
+</body>
+</html>
